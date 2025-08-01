@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="description" content="レシートのようなUIのパロディサイト">
+  <meta charset="UTF-8" />
+  <meta property="og:title" content="週末ゲームズ" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://89saba.zombie.jp/" />
+  <meta property="og:image"
+    content="https://res.cloudinary.com/de6lgx4lf/image/upload/v1753363892/receipt_DesignOGP_adzhdt.png" />
+  <meta property="og:site_name" content="極小メガバイト宣言！" />
+  <meta property="og:description" content="コンセプトパロディサイトの一つ" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <title>画面にフィットするレイアウト</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+  <style>
+    *,
+*::before,
+*::after {
+  box-sizing: border-box!important;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: "Courier New", Courier, monospace;
+  font-variant-numeric: tabular-nums;
+  background: #fefcf7;
+  scrollbar-width: none;
+}
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
+/* 全体ラッパー */
+main {
+  max-width: 300px;
+  width: 100%;
+  margin: 0 auto;
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  flex-direction: column;
+  height: 100svh;
+  border-radius: 3px;
+  box-shadow: 6px 6px 6px 0px rgba(0, 0, 0, 0.45);
+  background:#fff;
+  border-left: 1px solid #eee;
+}
+/*ヘッダー*/
+header {
+  flex-shrink: 0;
+  border-bottom: 1px dotted #000;
+}
+
+header p{
+  font-size: 14px;
+  margin: 0;
+  color: #666;
+  margin:0 30px 0 30px;
+  text-align: center;
+}
+
+h1 {
+  margin: 0;
+  height: 45px;
+}
+
+h1 img{
+  width: 100%;
+}
+
+header div{
+  text-align: center;
+}
+
+/*コンテンツ領域*/
+article {
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+article a{
+  text-decoration: none;
+  font-size: 14px;
+  color: #666;
+  border-bottom: 1px solid #000;
+}
+
+section.lv1{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: 1px dashed #000;
+  width: 100%;
+  padding: 5px 0 5px 0;
+}
+
+section.lv1 li{
+  list-style: none;
+  font-size: 14px;
+  color: #666;
+  text-align: right;
+}
+
+section.lv2{
+  border-bottom: 1px dashed #000;
+  width: 100%;
+  padding: 5px 0 5px 0;
+}
+
+.dashed{
+  border-bottom: 1px dashed #000;
+}
+
+.noBorder{
+  border: none;
+}
+
+section h2{
+  font-size: 14px;
+  color: #666;
+  margin: 0;
+  font-weight: normal;
+}
+
+section h2::after{
+  content: "：";
+}
+
+section h3{
+  font-size: 14px;
+  color: #666;
+  margin: 0;
+  font-weight: normal;
+  width: 100%;
+  text-align: center;
+}
+
+h3#reply-title{
+  border-top: 1px dashed #000;
+  border-bottom: 1px dashed #000;
+}
+
+section textarea{
+  width: 100%;
+}
+
+section.lv1 form input{
+  width: 100px;
+  margin-left: auto;
+  font-size: 14px;
+}
+
+section.lv1 form button{
+  margin-right: auto;
+  font-size: 14px;
+}
+
+.post h4{
+  margin: 0;
+  font-weight: bold;
+}
+
+.post h4::after{
+  content: "：";
+}
+
+.post time{
+  display: inline;
+  margin: 0;
+  font-weight: bold;
+}
+
+.post span{
+  display: inline;
+  margin: 0;
+  padding-left: 5px;
+  font-weight: bold;
+}
+
+section ul{
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+  color: #666;
+  list-style-position: inside;
+}
+
+dl{
+  margin: 0;
+  font-size: 14px;
+  color: #666;
+}
+
+section dd{
+  text-align: right;
+}
+
+.post{
+  border-top: 1px dashed #000;
+  border-bottom: 1px dashed #000;
+  font-size: 14px;
+  color: #666;
+  margin: 0;
+  font-weight: normal;
+  width: 100%;
+}
+
+article p{
+  font-size: 14px;
+  color: #666;
+}
+/*フッター*/
+footer {
+  flex-shrink: 0;
+  height: auto;
+  padding-top: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px dashed #000;
+}
+
+footer img{
+  width: 100%;
+}
+
+@media screen and (max-width: 375px) {
+  footer {
+    margin-bottom: 110px;
+  }
+}
+  </style>
+</head>
+
+<body>
+  <main>
+    <header>
+      <h1><img src="https://res.cloudinary.com/de6lgx4lf/image/upload/v1754022245/reciptHeader_ycdbtz.png" alt="ヘッダーロゴ"></h1>
+      <p>since 2025/06/25</p>
+      <p>ご来訪誠にありがとうございます</p>
+      <p><span>責：89saba</span></p>
+    </header>
+
+    <article>
+      <section class="lv1">
+        <h2>固定ページ</h2>
+        <ul>
+          <li>記事一覧</li>
+          <li>掲示板</li>
+          <li>相互リンク</li>
+          <li>私について</li>
+        </ul>
+      </section>
+      <section class="lv1">
+        <h2>記事検索</h2>
+        <form id="form" action="" method="get">
+          <input id="s-box" name="s" type="text" placeholder="キーワードを入力" />
+          <button type="submit" id="s-btn-area">検索</button>
+        </form>
+      </section>
+      <section class="lv2">
+        <h2>記事一覧</h2>
+        <dl>
+          <dt>2025/07/11</dt>
+          <dd>iPhoneのホーム画面を1ページで</dd>
+          <dt>2025/07/10</dt>
+          <dd>阪急大阪梅田駅ホーム内『たちまちカレー』</dd>
+          <dt>2025/06/29</dt>
+          <dd>about このサイト</dd>
+        </dl>
+      </section>
+      <section class="noBorder">
+        <h3 class="dashed">-----以下広告------</h3>
+      </section>
+      <section>
+        <!-- admax -->
+        <script src="https://adm.shinobi.jp/s/db5235082fa1b6bcadd1a524efddf9c7"></script>
+        <!-- admax -->
+      </section>
+      <section>
+        <div class="post">
+          <time>2025/07/11</time>
+          <span>89saba</span>
+          <h4>テスト投稿</h4>
+        </div>
+        <article>
+        <div class="post">
+          <time>2025/07/11</time>
+          <span>89saba</span>
+          <h4>テスト投稿</h4>
+        </div>
+        <p>これは最初のテキストです。</p>
+        <p>これはテストテキストです。これはテストテキストです。これはテストテキストです。これはテストテキストです。</p>
+        <p>これはテストテキストです。</p>
+        <p>これはテストテキストです。</p>
+        <p>これはテストテキストです。</p>
+        <p>これはテストテキストです。</p>
+        <p>これはテストテキストです。</p>
+        <p>これはテストテキストです。</p>
+        <p>これはテストテキストです。</p>
+        <p>これはテストテキストです。</p>
+        <p>これはテストテキストです。</p>
+        <p>これはテストテキストです。</p>
+        <p>これはテストテキストです。</p>
+        <p>これはテストテキストです。</p>
+        <p>これはテストテキストです。</p>
+        <p>これはテストテキストです。</p>
+        <p>これはテストテキストです。</p>
+        <p>これはテストテキストです。</p>
+        <p>これは最後のテキストです。</p>
+        </article>
+      </section>
+    </article>
+
+    <footer>
+
+      <a href="https://www.stylemap.co.jp/"><img src="https://www.f-counter.net/j/66/1753333251/" alt="アクセスカウンター"></a>
+
+    </footer>
+  </main>
+</body>
+
+</html>
