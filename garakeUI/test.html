@@ -1,0 +1,535 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>極小キロバイト文庫</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta name="description" content="ガラケー風UIと昔のネット文化を再現した、極小メガバイト宣言！の公式テストページです。懐かしい時代の感性を、CanvasやHTML5で再構築。">
+  <meta charset="UTF-8" />
+  <meta property="og:title" content="週末ゲームズ" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://89saba.zombie.jp/" />
+  <meta property="og:image" content="https://res.cloudinary.com/de6lgx4lf/image/upload/v1751096587/img_1_fzuqac.png" />
+  <meta property="og:site_name" content="週末ゲームズ" />
+  <meta property="og:description" content="スキマ時間の暇つぶし" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=DotGothic16&display=swap');
+*,
+*::before,
+*::after {
+  box-sizing: border-box!important;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	font-family :'DotGothic16', sans-serif;
+	background: #f9f9f9;
+	box-sizing: border-box;
+}
+
+html {
+  margin-top: 0 !important;
+}
+
+body {
+	width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+html, body {
+  overflow-x: hidden;
+}
+
+body.admin-bar {
+  margin-top: 0 !important;
+}
+
+#wpadminbar {
+  display: none;
+}
+
+main{
+	max-width: 470px;
+	width: 100%;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	height: 100svh;
+	overflow-y: hidden;
+
+}
+
+header {
+	height: 48px;
+	padding: 0 10px;
+	color: #222;
+	flex-shrink: 0;
+	font-family :'DotGothic16', sans-serif!important;
+}
+
+.header-inner {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+div#container{
+	display: flex;
+  flex-direction: column;
+	overflow-y: auto;
+	margin: 10px;
+	border: 1px solid #000;
+	box-shadow: 0px 0px 0px 5px rgba(0, 0, 0, 1), 0px 0px 0px 10px rgba(153, 153, 153, 1);
+}
+
+/*TOPナビゲーション*/
+div#item{
+	width: 100%;
+	height: 140px;
+	overflow-y: auto;
+	background-color: #15202a;
+	padding: 1rem;
+	font-family :'DotGothic16', sans-serif!important;
+}
+
+h1 {
+	font-size: 1.2rem;
+	margin: 0;
+	color: #f2f051;
+	text-align: center;
+	letter-spacing: 3px;
+}
+
+h1::before{
+	content: "＞";
+	opacity: 1;
+	animation: cursor 1s infinite;
+}
+
+h1::after{
+	content: "＜";
+	opacity: 1;
+	animation: cursor 1s infinite;
+}
+
+.subtitle{
+	font-size: 0.8rem;
+	text-align: center;
+	margin: 0;
+	letter-spacing: 2px;
+	color: #93b14b;
+}
+
+div#item li{
+	font-size: 10px;
+	list-style: none;
+	margin-bottom: 2px;
+	text-align: center;
+}
+
+div#item li a{
+	color: #fff;
+	border-bottom: 1px dotted #fff;
+}
+
+input#s-box{
+	max-width: 120px;
+}
+
+article {
+	position: relative;
+	overflow-y: auto;
+	background: #f9f9f9;
+	line-height: 1.8;
+	font-size: 1rem;
+	flex-grow: 1;
+}
+
+footer {
+	flex-shrink: 0;
+	height: 48px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 1.2rem;
+	font-family: sans-serif;
+	color: #222;
+}
+
+footer img{
+	width: 100%;
+	max-width: 470px;
+	height: auto;
+	margin: 0 auto;
+}
+
+section#content{
+	padding:0 5px;
+	font-family :sans-serif;
+}
+
+h1 {
+	font-size: 1.2rem;
+	margin: 0;
+}
+
+h2{
+	width: 100%;
+	margin: 0;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-shrink: 0;
+}
+
+h2 img{
+	width: 25px;
+	height: auto;
+}
+
+h2 span{
+	font-size: 0.9rem;
+	margin-left: auto;
+}
+
+.placeholder {
+	width: 48px;
+	height: 48px;
+	background: transparent;
+}
+
+div#select{
+	width: 100%;
+	height: 25px;
+	margin: 0;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-shrink: 0;
+	font-family :'DotGothic16', sans-serif!important;
+}
+
+div#select ul{
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0;
+	margin: 0;
+}
+
+div#select ul li{
+	display: flex;
+	flex: 1;
+	justify-content: space-between;
+	align-items: center;
+	height: 25px;
+	text-align: center;
+	list-style: none;
+	background-color: #eee;
+	display: block;
+	color: #222;
+}
+
+div#select ul li:hover{
+	background-color: #222;
+	color: #fff;
+}
+
+div#select ul li:nth-child(2){
+	border-left: 2px solid #000;
+	border-right: 2px solid #000;
+}
+
+div#select a{
+	text-decoration: none;
+	color: #222;
+}
+
+diV#select a:hover{
+		color: #fff;
+}
+
+address{
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	text-align: center;
+	padding: 0 10px 0 10px;
+}
+/*ここからコンテンツ部分*/
+section#content p{
+	color: #000;
+	font-size: 13px;
+}
+
+section#content span{
+	color: #7f0019;
+}
+
+section#content a{
+	text-decoration: none;
+	border-bottom: 1px dotted #222;
+	color: #222;
+}
+
+h3{
+	margin: 0;
+}
+
+h3::before{
+	content: "＞";
+	opacity: 1;
+	animation: cursor 1s infinite;
+}
+
+h3#comments{
+	margin: 0;
+}
+
+h4{
+	font-size:1.17em;
+	margin: 0;
+}
+
+#reply-title::before{
+	content: "Re:"!important;
+	animation: none;
+}
+
+time{
+	color: #7f0019;
+	font-size: 10px;
+	line-height: 10px;
+	padding-left: 5px;
+	display: inline;
+}
+
+nav ul{
+	padding-inline-start: 0!important;
+	text-align:center;
+}
+
+.author{
+	font-size: 10px;
+	line-height: 10px;
+	padding-left: 5px;
+}
+
+@keyframes cursor {
+  0% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+iframe{
+	display:none;
+}
+
+/*ここからハンバーガーメニュー*/
+.hamburger-menu {
+  width: 48px;
+  height: 48px;
+  position: relative;
+  border: none;
+  background: transparent;
+  appearance: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.hamburger-menu__bar {
+  display: inline-block;
+  width: 44%;
+  height: 2px;
+  background: #222;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: .5s;
+}
+
+.hamburger-menu__bar:first-child {
+  top: 16px;
+}
+
+.hamburger-menu__bar:nth-child(2) {
+  top: 24px;
+}
+
+.hamburger-menu__bar:last-child {
+  top: 32px;
+}
+
+.hamburger-menu--open .hamburger-menu__bar {
+  top: 50%;
+}
+
+.hamburger-menu--open .hamburger-menu__bar:first-child {
+  transform: translateX(-50%) translateY(-50%) rotate(45deg);
+}
+
+.hamburger-menu--open .hamburger-menu__bar:last-child {
+  transform: translateX(-50%) translateY(-50%) rotate(-45deg);
+}
+
+.hamburger-menu--open .hamburger-menu__bar:nth-child(2) {
+  display: none;
+}
+
+.navigation {
+  display: none;
+  background: #242424;
+  position: absolute;
+  top: 48px;
+  width: 100%;
+  z-index: 9999;
+}
+
+.navigation__list {
+  text-align: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  padding-inline-start: none!important;
+}
+
+.navigation__list-item {
+  border-bottom: solid 1px #474747;
+}
+
+.navigation__list-item:first-child {
+  border-top: solid 1px #474747;
+}
+
+.navigation__link {
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+  display: block;
+  padding: 24px 0;
+  transition: .5s;
+}
+
+@media screen and (max-width: 375px) {
+  footer {
+	height: auto;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .navigation__link:hover {
+    background: #333;
+  }
+}
+  </style>
+  <script>
+    $(function () {
+  $('#js-hamburger-menu, .navigation__link').on('click', function () {
+    $('.navigation').slideToggle(500)
+    $('.hamburger-menu').toggleClass('hamburger-menu--open')
+  });
+
+showTime()
+setInterval(showTime, 60 * 1000);
+;});
+
+function showTime(){
+  const nowTime=new Date();
+  const nowHours=nowTime.getHours().toString().padStart(2, '0');;
+  const nowMinutes=nowTime.getMinutes().toString().padStart(2, '0');;
+  let msg =  nowHours + ":" + nowMinutes;
+  document.getElementById("tokei").innerHTML = msg;
+}
+  </script>
+</head>
+
+<body ontouchstart=""class="home blog logged-in wp-theme-garakeUI">
+  <main>
+    <header>
+      <div class="header-inner">
+        <button class="hamburger-menu placeholder" id="js-hamburger-menu">
+          <span class="hamburger-menu__bar"></span>
+          <span class="hamburger-menu__bar"></span>
+          <span class="hamburger-menu__bar"></span>
+        </button>
+        <nav class="navigation">
+  <div class="menu"><ul>
+<li class="navigation__list-item"><a class="navigation__link" href=""></a></li>
+<li class="navigation__list-item"><a class="navigation__link" href=""></a></li>
+</ul></div>
+</nav>
+<a href="https://www.stylemap.co.jp/"><img src="https://www.f-counter.net/j/65/1751374527/" alt="アクセスカウンター"></a>
+        <form id="form" action="http://localhost/wordpress/" method="get">
+    <input id="s-box" name="s" type="text" placeholder="キーワードを入力"/>
+    <button type="submit" id="s-btn-area">検索</button>
+</form>      </div>
+    </header> 
+<div id="container">
+    <h2>
+      <img src="https://res.cloudinary.com/de6lgx4lf/image/upload/v1754025508/antenna_pict_q8lhpp.png" alt="アンテナ">
+      <span id="tokei"></span>
+      <img src="https://res.cloudinary.com/de6lgx4lf/image/upload/v1754025507/battery_pict_cwfxm5.png" alt="バッテリー">
+    </h2>
+    <article>
+      <section id="content">
+        <div id="item">
+          <div class="subtitle">スキマ時間の暇つぶし</div>
+          <h1>極小メガバイト宣言！</h1>
+          <div class="subtitle">↓固定ページ一覧↓</div>
+          <li class="page_item page-item-3"><a href="http://localhost/wordpress/privacy-policy/">アーカイブ</a></li>
+<li class="page_item page-item-2"><a href="http://localhost/wordpress/sample-page/">ホーム</a></li>
+        </div>
+                <h3><a href="http://localhost/wordpress/2025/07/29/%e7%94%bb%e5%83%8f%e3%83%86%e3%82%b9%e3%83%88%e3%81%a7%e3%81%99/">Test Post</a></h3>
+        <time>⏰2025/07/29</time><span class="author">👤games_b</span>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <p>つれづれなるまゝに、日暮らし、硯にむかひて、心にうつりゆくよしなし事を、そこはかとなく書きつくれば、あやしうこそものぐるほしけれ。（Wikipediaより）</p>
+                <h3><a href="http://localhost/wordpress/2025/06/27/test/">test</a></h3>
+        <time>⏰2025/06/27</time><span class="author">👤games_b</span>
+        <p>テスト投稿です</p>
+                <h3><a href="http://localhost/wordpress/2025/06/27/%e3%81%93%e3%82%8c%e3%81%af%e3%83%86%e3%82%b9%e3%83%88%e6%8a%95%e7%a8%bf%e3%81%a7%e3%81%99/">これはテスト投稿です</a></h3>
+        <time>⏰2025/06/27</time><span class="author">👤games_b</span>
+        <p>テストです。テストです。テストです。テストです。テストです。テストです。テストです。テストです。テストです。テストです。 これもテストでーす。 テストです。 これもテストでーす。 テストです。 これもテストでーす。 テス [&hellip;]</p>
+                <h3><a href="http://localhost/wordpress/2025/06/27/hello-world/">Hello world!</a></h3>
+        <time>⏰2025/06/27</time><span class="author">👤games_b</span>
+        <p>WordPress へようこそ。こちらは最初の投稿です。編集または削除し、コンテンツ作成を始めてください。</p>
+              </section>
+    </article>
+
+    <div id="select">
+      <ul>
+        <li><a href="javascript:history.back();">戻る</a></li>
+        <li><a href="http://localhost/wordpress/">TOP</a></li>
+        <li><a href="javascript:history.forward();">進む</a></li>
+      </ul>
+    </div>
+    </div>
+<footer>
+       <!-- admax -->
+<script src="https://adm.shinobi.jp/s/7c936d0f0d8cacd71d70a6522cb51d55"></script>
+<!-- admax -->
+	
+</main>
+</body>
+</html>
